@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/beautiful-piano-with-spacey-reverb-3494.mp3-ccb906e6a089b4942ef30d6061aa211e.mp3str"
+
+[deps]
+
+source_file="res://sounds/beautiful-piano-with-spacey-reverb-3494.mp3"
+dest_files=[ "res://.import/beautiful-piano-with-spacey-reverb-3494.mp3-ccb906e6a089b4942ef30d6061aa211e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

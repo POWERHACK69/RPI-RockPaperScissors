@@ -1,0 +1,413 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://sprites/rock.png" type="Texture" id=1]
+[ext_resource path="res://sprites/scissors.png" type="Texture" id=2]
+[ext_resource path="res://sprites/sheet.png" type="Texture" id=3]
+[ext_resource path="res://fonts/M.ZubiKid.1.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/healthbar_full.png" type="Texture" id=5]
+[ext_resource path="res://sprites/healthbar_empty.png" type="Texture" id=6]
+[ext_resource path="res://sprites/cranium-2028555_1280.png" type="Texture" id=7]
+[ext_resource path="res://sprites/timer.png" type="Texture" id=8]
+[ext_resource path="res://sprites/timerEmpty.png" type="Texture" id=9]
+[ext_resource path="res://scripts/proto.gd" type="Script" id=10]
+[ext_resource path="res://sounds/my-shit-3243.mp3" type="AudioStream" id=11]
+[ext_resource path="res://sounds/Hit.wav" type="AudioStream" id=12]
+
+[sub_resource type="DynamicFont" id=2]
+size = 62
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 67
+outline_size = 3
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "draw"
+length = 1.5
+
+[sub_resource type="Animation" id=5]
+resource_name = "opp_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Opponent:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 456, 112 ), Vector2( 254, 112 ), Vector2( 456, 112 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "player_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 112 ), Vector2( 200, 112 ), Vector2( 8, 112 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "opp_hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Opponent:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "player_hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=10]
+size = 42
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 42
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[node name="proto" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_dp = 10
+opp_dp = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.101961, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 320.0
+margin_top = 288.0
+margin_right = 390.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 2 )
+text = "VS"
+
+[node name="rock" type="Sprite" parent="."]
+position = Vector2( 115, 1044 )
+scale = Vector2( 0.145313, 0.152225 )
+texture = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="rock"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -626.237
+margin_top = -453.277
+margin_right = -626.237
+margin_bottom = -453.277
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scissors" type="Sprite" parent="."]
+position = Vector2( 595.03, 1049.04 )
+scale = Vector2( 0.145313, 0.152225 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="scissors"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -640.0
+margin_top = -320.0
+margin_right = -640.0
+margin_bottom = -320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sheet" type="Sprite" parent="."]
+position = Vector2( 366.984, 1046.52 )
+scale = Vector2( 0.145313, 0.152225 )
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="sheet"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -545.0
+margin_top = -640.0
+margin_right = -534.0
+margin_bottom = -621.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 112.0
+margin_right = 154.0
+margin_bottom = 171.0
+custom_fonts/font = SubResource( 1 )
+text = " YOU:"
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 118.957, 206.398 )
+scale = Vector2( 0.134024, 0.152503 )
+texture = ExtResource( 7 )
+
+[node name="TextureProgress" type="TextureProgress" parent="Player"]
+margin_top = 80.0
+margin_right = 360.0
+margin_bottom = 440.0
+rect_scale = Vector2( 0.7, 0.7 )
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Player"]
+margin_left = 8.0
+margin_top = 544.0
+margin_right = 197.0
+margin_bottom = 598.0
+custom_fonts/font = SubResource( 3 )
+text = "LV: 1
+HP: 100
+DP: 30
+RM: 1.5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opponent" type="Label" parent="."]
+margin_left = 456.0
+margin_top = 112.0
+margin_right = 601.999
+margin_bottom = 171.0
+custom_fonts/font = SubResource( 1 )
+text = " COM:"
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Opponent"]
+position = Vector2( 118.957, 206.398 )
+scale = Vector2( 0.134024, 0.152503 )
+texture = ExtResource( 7 )
+
+[node name="TextureProgress" type="TextureProgress" parent="Opponent"]
+margin_top = 80.0
+margin_right = 360.0
+margin_bottom = 440.0
+rect_scale = Vector2( 0.7, 0.7 )
+value = 50.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+fill_mode = 3
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Opponent"]
+margin_left = 8.0
+margin_top = 544.0
+margin_right = 197.0
+margin_bottom = 712.0
+custom_fonts/font = SubResource( 3 )
+text = "LV: 1
+HP: 100
+DP: 30
+RM: 1.5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerUI" type="TextureProgress" parent="."]
+margin_left = 296.0
+margin_top = 256.0
+margin_right = 936.0
+margin_bottom = 896.0
+rect_scale = Vector2( 0.2, 0.2 )
+step = 0.001
+value = 69.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="TimerUI"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Round" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.5
+margin_top = -90.0
+margin_right = 136.5
+margin_bottom = -13.0
+custom_fonts/font = SubResource( 4 )
+text = "ROUND 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ComTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/draw = SubResource( 9 )
+anims/opp_attack = SubResource( 5 )
+anims/player_attack = SubResource( 6 )
+
+[node name="HurtAnimation" type="AnimationPlayer" parent="."]
+anims/opp_hurt = SubResource( 7 )
+anims/player_hurt = SubResource( 8 )
+
+[node name="EndScreen" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.776471 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.137255, 0.337255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EndScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -294.5
+margin_top = -49.5
+margin_right = 294.5
+margin_bottom = 49.5
+custom_fonts/font = SubResource( 10 )
+text = "WOW, YOU BEAT ME? NOT BAD
+FOR A HUMAN!"
+align = 1
+
+[node name="Label2" type="Label" parent="EndScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -296.0
+margin_top = 312.0
+margin_right = 293.0
+margin_bottom = 411.0
+custom_fonts/font = SubResource( 10 )
+text = "WOW, YOU BEAT ME? NOT BAD
+FOR A HUMAN!"
+align = 1
+
+[node name="again" type="Button" parent="EndScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.5
+margin_top = 110.0
+margin_right = 122.5
+margin_bottom = 164.0
+custom_fonts/font = SubResource( 11 )
+text = "PLAY AGAIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Button" parent="EndScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.5
+margin_top = 210.0
+margin_right = 122.5
+margin_bottom = 264.0
+custom_fonts/font = SubResource( 11 )
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[connection signal="pressed" from="rock/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="scissors/Button" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="sheet/Button" to="." method="_on_Button1_pressed"]
+[connection signal="timeout" from="TimerUI/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ComTimer" to="." method="_on_ComTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="EndScreen/again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="EndScreen/quit" to="." method="_on_quit_pressed"]

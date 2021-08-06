@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/my-shit-3243.mp3-0cc1e70e8f73cd91864c32bee7454c9d.mp3str"
+
+[deps]
+
+source_file="res://sounds/my-shit-3243.mp3"
+dest_files=[ "res://.import/my-shit-3243.mp3-0cc1e70e8f73cd91864c32bee7454c9d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

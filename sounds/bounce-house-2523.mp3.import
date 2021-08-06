@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bounce-house-2523.mp3-0f9f28e68cb924f4cada0c8eaa02a285.mp3str"
+
+[deps]
+
+source_file="res://sounds/bounce-house-2523.mp3"
+dest_files=[ "res://.import/bounce-house-2523.mp3-0f9f28e68cb924f4cada0c8eaa02a285.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
